@@ -1,0 +1,31 @@
+spring:
+  datasource:
+    url: "jdbc:postgresql://localhost:5432/postgres"
+    username: postgres #${db.username}
+    password: q1 #${db.password}
+    hikari:
+      connection-timeout: 30000
+      idle-timeout: 600000
+      max-lifetime: 1800000
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        jdbc:
+          lob.non_contextual_creation: true
+
+  liquibase:
+      change-log: classpath:db/changelog/changelog-master.xml
+
+
+server:
+  servlet:
+    context-path: "/api"
+    data:
+      rest:
+        basePath: /api
+
+
+sample:
+  config:
+    url: "http://test.org"
